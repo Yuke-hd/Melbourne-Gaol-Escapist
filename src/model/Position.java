@@ -10,10 +10,10 @@ public class Position {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "x: "+x+" y: "+y;
+		return "x: " + x + " y: " + y;
 	}
 
 	public int getSeq() {
@@ -21,6 +21,8 @@ public class Position {
 		int seq = gz * y + x + 1;
 		return seq;
 	}
+
+	
 
 	public int getX() {
 		return x;

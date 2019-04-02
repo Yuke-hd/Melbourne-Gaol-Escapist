@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import model.DIR;
 import model.Position;
@@ -15,9 +17,9 @@ import model.tile.Wall;
 import view.TestWindow;
 
 public class GameControl {
-	public static int wall[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 21, 31, 41, 51, 61, 71, 81, 91, 10, 20, 30, 40, 50,
-			60, 70, 80, 90, 100, 92, 93, 94, 95, 96, 97, 98, 99 };
-	public static int gameSize = 10;
+	public static int wall[]; //= { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 21, 31, 41, 51, 61, 71, 81, 91, 10, 20, 30, 40, 50,
+			//60, 70, 80, 90, 100, 92, 93, 94, 95, 96, 97, 98, 99 };
+	public static int gameSize = 25;
 	public static DIR dir;
 	public static int playerCounter;
 	public static ArrayList<Player> players;
@@ -26,23 +28,43 @@ public class GameControl {
 	}
 
 	public static void initilize() {
-		players= new ArrayList<Player>();
-		Havoc h = new Havoc(new Position(2, 2), "aaa");
-		Jager j = new Jager(new Position(3, 2), "bbb");
-		A47 a = new A47(new Position(4, 2), "ccc");
-		LockSmith l = new LockSmith(new Position(5, 2), "ddd");
-		
-		Warden w = new Warden(new Position(6, 2), "eee");
+		iniWall();
+		players = new ArrayList<Player>();
+		Havoc h = new Havoc(new Position(2, 5), "aaa");
+		Jager j = new Jager(new Position(5, 3), "bbb");
+		A47 a = new A47(new Position(7, 6), "ccc");
+		LockSmith l = new LockSmith(new Position(1, 8), "ddd");
+
+		Warden w = new Warden(new Position(6, 7), "eee");
 		Guard g = new Guard(new Position(7, 2), "fff");
-		
+
 		players.add(h);
 		players.add(j);
 		players.add(a);
 		players.add(l);
 		players.add(w);
 		players.add(g);
-		
-		playerCounter=0;
+
+		playerCounter = 0;
+
+	}
+
+	private static int[] iniWall() {
+		List<Integer> list = new ArrayList<Integer>();// **须定义时就进行转化**
+		for (int i = 0; i < gameSize; i++) {
+			list.add(i+1);
+			list.add(i*gameSize+1);
+			list.add((i+1)*gameSize);
+			if (i == gameSize-1) {
+				for (int j = 0; j < gameSize-1; j++) {
+					list.add(j+1+gameSize*(gameSize-1));
+				}
+			}
+		}
+		Integer[] nsz = new Integer[list.size()];
+		list.toArray(nsz);
+		wall = list.stream().mapToInt(Integer::intValue).toArray();
+		return wall;
 
 	}
 

@@ -8,12 +8,19 @@ import java.awt.Graphics;
 import java.awt.color.ColorSpace;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import java.util.Random;
+
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.CloseAction;
 
 import controller.GameControl;
 import model.DIR;
+import model.Position;
 import model.player.Player;
+import utility.util;
 
 public class TestWindow {
 
@@ -30,8 +37,29 @@ class Mycanvas extends Canvas {
 	Random rand = new Random();
 
 	public void paint(Graphics g) {
-		g.setColor(new Color(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255))); // 设置画笔颜色
-		g.drawRect(rand.nextInt(250), rand.nextInt(180), 50, 50); // 画矩形，XY坐标随机，长宽各为40，50
+//		g.setColor(new Color(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255))); // 设置画笔颜色
+//		g.drawRect(rand.nextInt(250), rand.nextInt(180), 50, 50); // 画矩形，XY坐标随机，长宽各为40，50
+		int gz = GameControl.gameSize;
+		for (int i = 0; i < gz; i++) {
+			for (int j = 0; j < gz; j++) {
+				Position position = new Position(i, j);
+				if (!util.findEle(GameControl.wall, position.getSeq())) {
+					g.setColor(new Color(0xFFFFFF));
+					g.fillRect(25 * i, 25 * j, 25, 25);
+				} else {
+					g.setColor(new Color(0x000000));
+					g.fillRect(25 * i, 25 * j, 25, 25);
+				}
+			}
+		}
+		
+		int playerCounter =GameControl.playerCounter;
+		ArrayList<Player> players  = GameControl.players;
+		for (int i = 0; i < players.size(); i++) {
+			Position pos = players.get(i).getPos();
+			g.setColor(new Color(0x1AE6E6));
+			g.fillRect(25 * pos.getX(), 25 * pos.getY(), 25, 25);
+		}
 	}
 }
 
@@ -47,15 +75,23 @@ class MyFrame extends Frame {
 
 	public void LaunchMyFrame() { // 定义一个运行窗体方法
 		// setLayout(); // 设置默认布局
+		
+
 		setSize(300, 333); // 设置窗体大小
 		mc.setPreferredSize(new Dimension(250, 180));
 		//
 		this.setBackground(new Color(255, 255, 255)); // 设置窗体背景色
 		setVisible(true); // 设置窗体可见
-		//this.addKeyListener(new Monitor()); // Monitor要实现KeyListener接口(键盘监听）
+		// this.addKeyListener(new Monitor()); // Monitor要实现KeyListener接口(键盘监听）
 		this.add(mc);
 		mc.addKeyListener(new Monitor());
 		// Graphics graphics = this.getGraphics();
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
 
 	}
 
@@ -65,7 +101,7 @@ class MyFrame extends Frame {
 			DIR dir = null;
 			int count = GameControl.playerCounter;
 			Player currentPlayer = GameControl.players.get(count);
-			
+
 			dir = getDir(e);
 			System.out.println(currentPlayer.getClass().getSimpleName() + " ");
 			mc.repaint();
