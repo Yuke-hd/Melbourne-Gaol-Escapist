@@ -5,9 +5,13 @@ package view.tilesMap;/*
  * *@ver 1.0
  * */
 
+import model.Position;
+import model.tile.Tiles;
+
 import java.awt.*;
 
 public abstract class TileMap {
     public abstract void render(Graphics g);
 
+    public abstract Tiles checkIfIsWall(Position pos);
 }

@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -14,9 +13,7 @@ import model.player.Jager;
 import model.player.LockSmith;
 import model.player.Player;
 import model.player.Warden;
-import model.tile.Wall;
 import utility.util;
-import view.TestWindow;
 
 public class GameControl {
 	public static int wall[]; //= { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 21, 31, 41, 51, 61, 71, 81, 91, 10, 20, 30, 40, 50,

@@ -86,4 +86,6 @@ public class Player {
 		this.status = status;
 	}
 
+
+
 }

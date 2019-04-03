@@ -51,4 +51,17 @@ public class TileMapNorm extends TileMap {
 
         }
     }
+
+    @Override
+    public Tiles checkIfIsWall(Position pos) {
+        int x = pos.getX();
+        int y = pos.getY();
+        for (Tiles tiles : blocks
+        ) {
+            if (tiles.getPos().getX() == x & tiles.getPos().getY() == y) {
+                return tiles;
+            }
+        }
+        return null;
+    }
 }

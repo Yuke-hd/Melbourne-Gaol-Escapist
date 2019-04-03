@@ -5,6 +5,8 @@ package view.tilesMap;/*
  * *@ver 1.0
  * */
 
+import model.Position;
+import model.tile.Tiles;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 public class TileManager {
     public static ArrayList<TileMap> tm;
 
-    public TileManager() {
+    private TileManager() {
         tm = new ArrayList<TileMap>();
     }
 
@@ -91,5 +93,10 @@ public class TileManager {
         for(int i = 0; i < tm.size(); i++) {
             tm.get(i).render(g);
         }
+    }
+
+    public Tiles getTileType(Position pos){
+        if (tm.get(1).checkIfIsWall(pos) != null) return  tm.get(1).checkIfIsWall(pos);
+        else return tm.get(0).checkIfIsWall(pos);
     }
 }

@@ -24,19 +24,6 @@ public class SetupJFame extends JFrame implements KeyListener {
 
     }
 
-//
-//    public void addNotify() {
-//        super.addNotify();
-//
-//        createBufferStrategy(2);
-//        bs = getBufferStrategy();
-//
-//        setLayout(new BorderLayout());
-//        add(new GamePanel(bs, 1280, 720));
-//
-//    }
-
-
     @Override
     public void keyTyped(KeyEvent e) {
 

@@ -2,6 +2,7 @@ package view.tilesMap;
 
 import java.awt.Graphics;
 
+import javafx.geometry.Pos;
 import model.Position;
 import model.blocks.NormBlock;
 import model.tile.Tiles;
@@ -18,7 +19,6 @@ public class TileMapWall extends TileMap {
     public static int height;
 
     public TileMapWall(String data, Sprite sprite, int width, int height, int tileWidth, int tileHeight, int tileColumns) {
-    	Tiles tempBlock;
         event_blocks = new Tiles[width * height];
 
         this.tileWidth = tileWidth;
@@ -40,16 +40,30 @@ public class TileMapWall extends TileMap {
                 draw_location_x = (i % width) * tileWidth;
                 draw_location_y = (i / width) * tileHeight;
 
-                event_blocks[i] = new NormBlock(sprite.getSprite(sprite_x, sprite_y), new Position(draw_location_x,draw_location_y), tileWidth, tileHeight);
+                event_blocks[i] = new NormBlock(sprite.getSprite(sprite_x, sprite_y), new Position(draw_location_x, draw_location_y), tileWidth, tileHeight);
             }
         }
     }
 
-    public void render(Graphics g) {
-        for (int i = 0; i < event_blocks.length;i++) {
-                if(event_blocks[i] != null)
-                    event_blocks[i].render(g);
+    public Tiles checkIfIsWall(Position pos) {
+        int x = pos.getX();
+        int y = pos.getY();
+        for (Tiles tiles : event_blocks
+        ) {
+            if (tiles.getPos().getX() == x & tiles.getPos().getY() == y) {
+                return tiles;
             }
+        }
+
+        return null;
+    }
+
+
+    public void render(Graphics g) {
+        for (int i = 0; i < event_blocks.length; i++) {
+            if (event_blocks[i] != null)
+                event_blocks[i].render(g);
+        }
     }
 }
 
