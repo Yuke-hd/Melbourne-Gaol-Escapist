@@ -1,51 +1,84 @@
 package view;
 
+import controller.GameControl;
+import model.DIR;
+import model.player.Player;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
-public class SetupJFame extends JFrame implements KeyListener {
+public class SetupJFame extends JFrame  {
     public static final long serialVersionUID = 1L;
-    private BufferStrategy bs;
-
+    public GamePanel gp;
 
     //The menu should show a squared board and the pieces placed on the board
     public SetupJFame() {
         setTitle("Game");
         setSize(1280,720);
-        add(new GamePanel(1280, 720));
+        gp = new GamePanel(1280, 720);
+        add(gp);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        setIgnoreRepaint(true);
-//        pack();
         setLocationRelativeTo(null);
         setVisible(true);
+        gp.addKeyListener(new Monitor());
 
     }
+    class Monitor extends KeyAdapter { // 内部类，实现KeyListener的子类KeyAdapter
 
-    @Override
-    public void keyTyped(KeyEvent e) {
+        public void keyPressed(KeyEvent e) { // 重写要实现的按下按键的方法
+            DIR dir = null;
+            int count = GameControl.playerCounter;
+            Player currentPlayer = GameControl.players.get(count);
 
-    }
+            dir = getDir(e);
+            System.out.println(currentPlayer.getClass().getSimpleName() + " ");
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int x = 0;
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_DOWN:
-                x = 1;
-            case KeyEvent.VK_UP:
-                x = 2;
-            case KeyEvent.VK_RIGHT:
-                x = 3;
-            case KeyEvent.VK_LEFT:
-                x = 4;
-            case KeyEvent.VK_ESCAPE:
-                x = 5;
+            if (dir == null) {
+                return;
+            }
 
+            try {
+                currentPlayer.move(dir);
+            } catch (Exception e1) {
+                System.err.println(e1.getMessage());
+                return;
+            }
+            System.out.println(" @ " + currentPlayer.getPos().getSeq());
+            System.out.println(currentPlayer.getPos());
+            System.out.println();
+            if (count < 5) {
+                GameControl.playerCounter++;
+            } else {
+                GameControl.playerCounter = 0;
+            }
+
+            gp.repaint();
 
         }
+
+        public DIR getDir(KeyEvent e) {
+            int key = e.getKeyCode(); // 获取按下按键的虚拟码(int类型）
+            DIR dir = null;
+            if (key == KeyEvent.VK_UP) { // 与按键的虚拟码进行比较，是按下哪个按键
+                dir = DIR.up;
+            } else if (key == KeyEvent.VK_DOWN) { // 向下箭头
+                dir = DIR.down;
+            } else if (key == KeyEvent.VK_LEFT) {
+                dir = DIR.left;
+            } else if (key == KeyEvent.VK_RIGHT) {
+                dir = DIR.right;
+            } else {
+                System.out.print("invalid input : ");
+                return null;
+            }
+            return dir;
+        }
+    }
+
 
 
 //        switch (x) {
@@ -105,10 +138,4 @@ public class SetupJFame extends JFrame implements KeyListener {
 
     }
 
-    @Override
-    public void keyReleased(KeyEvent e) {
 
-    }
-
-
-}

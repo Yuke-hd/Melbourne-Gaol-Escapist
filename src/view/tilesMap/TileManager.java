@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class TileManager {
     public static ArrayList<TileMap> tm;
 
+    private Graphics g;
     private TileManager() {
         tm = new ArrayList<TileMap>();
     }
@@ -89,14 +90,26 @@ public class TileManager {
     }
 
     public void render(Graphics g) {
+        this.g = g;
+        draw();
+
+    }
+
+    public void draw(){
+
+
 
         for(int i = 0; i < tm.size(); i++) {
             tm.get(i).render(g);
         }
     }
 
+
     public Tiles getTileType(Position pos){
         if (tm.get(1).checkIfIsWall(pos) != null) return  tm.get(1).checkIfIsWall(pos);
         else return tm.get(0).checkIfIsWall(pos);
     }
+
+
+
 }

@@ -1,5 +1,6 @@
 package model.player;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import controller.GameControl;
@@ -7,6 +8,7 @@ import model.DIR;
 import model.Position;
 import model.item.Item;
 import utility.util;
+import view.Sprite;
 
 public class Player {
 
@@ -15,12 +17,15 @@ public class Player {
 	protected ArrayList<Item> inventory = null;
 	protected int FOV;
 	protected Enum<PlayerStat> status;
+	private Sprite sprite;
 
 	public Player(Position pos, String name) {
 		this.pos = pos;
 		this.name = name;
 		this.FOV = 5;
 		this.status = PlayerStat.normal;
+		this.sprite = new Sprite("res/tile/" + "Wall" + ".png", 16, 16);
+
 	}
 
 	public Position checkMove(DIR dir) {
@@ -86,6 +91,10 @@ public class Player {
 		this.status = status;
 	}
 
-
+	public void render(Graphics g){
+		g.drawImage(sprite.getSprite(1,1,16,16),16 * pos.getX(), 16 * pos.getY(),null);
+//		g.setColor(new Color(0x4736FF)); // draw the floors in white
+//		g.fillRect(16 * pos.getX(), 16 * pos.getY(), 16, 16);
+	}
 
 }
