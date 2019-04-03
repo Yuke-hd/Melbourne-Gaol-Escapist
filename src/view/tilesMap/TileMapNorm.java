@@ -8,6 +8,8 @@ package view.tilesMap;/*
 import model.Position;
 import model.blocks.NormBlock;
 import model.tile.Tiles;
+import org.junit.Before;
+import org.junit.Test;
 import view.Sprite;
 import java.awt.*;
 
@@ -52,16 +54,12 @@ public class TileMapNorm extends TileMap {
         }
     }
 
-    @Override
-    public Tiles checkIfIsWall(Position pos) {
-        int x = pos.getX();
-        int y = pos.getY();
-        for (Tiles tiles : blocks
-        ) {
-            if (tiles.getPos().getX() == x & tiles.getPos().getY() == y) {
-                return tiles;
-            }
-        }
-        return null;
+
+    public Position getRandomPoint(){
+        double random = Math.random() * (blocks.length-1);
+        return blocks[(int)random].getPos();
     }
+
+
+
 }

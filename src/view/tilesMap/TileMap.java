@@ -13,7 +13,5 @@ import java.awt.*;
 public abstract class TileMap {
     public abstract void render(Graphics g);
 
-    public abstract Tiles checkIfIsWall(Position pos);
-
 
 }

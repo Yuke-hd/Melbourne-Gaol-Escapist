@@ -5,8 +5,10 @@ package view.tilesMap;/*
  * *@ver 1.0
  * */
 
+import javafx.geometry.Pos;
 import model.Position;
 import model.tile.Tiles;
+import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -26,6 +28,8 @@ public class TileManager {
     private TileManager() {
         tm = new ArrayList<TileMap>();
     }
+    private int width = 0;
+    private int height = 0;
 
     public TileManager(String path) {
         tm = new ArrayList<TileMap>();
@@ -35,8 +39,7 @@ public class TileManager {
     private void addTileMap(String path, int blockWidth, int blockHeight) {
         String imagePath;
 
-        int width = 0;
-        int height = 0;
+
         int tileWidth;
         int tileHeight;
         int tileColumns;
@@ -69,17 +72,16 @@ public class TileManager {
                 node = list.item(i);
                 eElement = (Element) node;
                 if(i <= 0) {
+
                     width = Integer.parseInt(eElement.getAttribute("width"));
                     height = Integer.parseInt(eElement.getAttribute("height"));
                 }
 
                 data[i] = eElement.getElementsByTagName("data").item(0).getTextContent();
 
-                if(i < 1) {
-//                    tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
-                    tm.add(new TileMapNorm(data[i], sprite, width, height, tileWidth*2, tileHeight*2, tileColumns));
-                } else {
-                    tm.add(new TileMapWall(data[i], sprite, width, height, blockWidth*2, blockHeight*2, tileColumns));
+                switch (i){
+                    case 2: tm.add(new TileMapWall(data[i], sprite, width, height, blockWidth*2, blockHeight*2, tileColumns));break;
+                    default: tm.add(new TileMapNorm(data[i], sprite, width, height, tileWidth*2, tileHeight*2, tileColumns));
                 }
 
 
@@ -96,9 +98,6 @@ public class TileManager {
     }
 
     public void draw(){
-
-
-
         for(int i = 0; i < tm.size(); i++) {
             tm.get(i).render(g);
         }
@@ -106,8 +105,13 @@ public class TileManager {
 
 
     public Tiles getTileType(Position pos){
-        if (tm.get(1).checkIfIsWall(pos) != null) return  tm.get(1).checkIfIsWall(pos);
-        else return tm.get(0).checkIfIsWall(pos);
+        TileMapWall tileMapWall = (TileMapWall)tm.get(1);
+        if (tileMapWall.checkIfIsWall(pos) != null) return tileMapWall.checkIfIsWall(pos);
+        else return null;
+    }
+
+    public Position getRandomStartPoint(){
+        return ((TileMapNorm)tm.get(1)).getRandomPoint();
     }
 
 
