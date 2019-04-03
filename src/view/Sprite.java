@@ -23,7 +23,6 @@ public class Sprite {
 
         System.out.println("Loading: " + file + "...");
         SPRITESHEET = loadSprite(file);
-        System.out.println(123);
 
         wSprite = SPRITESHEET.getWidth() / w;
         hSprite = SPRITESHEET.getHeight() / h;
@@ -74,20 +73,9 @@ public class Sprite {
         }
     }
 
-    public BufferedImage getSpriteSheet() {
-        return SPRITESHEET;
-    }
-
     public BufferedImage getSprite(int x, int y) {
         BufferedImage originalImage = SPRITESHEET.getSubimage(x * w, y * h, w, h);
 
-        int times = 2;
-        int width = originalImage.getWidth()/times;
-        int height = originalImage.getHeight()/times;
-        BufferedImage newImage = new BufferedImage(width,height,originalImage.TYPE_INT_RGB);
-
-
-       // Image img = ima.getScaledInstance(4,4, Image.SCALE_AREA_AVERAGING);
         return SPRITESHEET.getSubimage(x * w, y * h, w, h);
     }
 
@@ -95,31 +83,11 @@ public class Sprite {
         return SPRITESHEET.getSubimage(x * w, y * h, w, h);
     }
 
-    public BufferedImage[] getSpriteArray(int i) {
-        return spriteArray[i];
-    }
 
-    public BufferedImage[][] getSpriteArray2(int i) {
-        return spriteArray;
-    }
-
-    public static void drawArray(Graphics2D g, ArrayList<BufferedImage> img, Position pos, int width, int height,
-                                 int xOffset, int yOffset) {
-        float x = pos.getX();
-        float y = pos.getY();
-
-        for (int i = 0; i < img.size(); i++) {
-            if (img.get(i) != null) {
-                g.drawImage(img.get(i), (int) x, (int) y, width, height, null);
-            }
-
-            x += xOffset;
-            y += yOffset;
-        }
     }
 
 
 
 
 
-}
+

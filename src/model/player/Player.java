@@ -24,7 +24,7 @@ public class Player {
 		this.name = name;
 		this.FOV = 5;
 		this.status = PlayerStat.normal;
-		this.sprite = new Sprite("res/tile/" + "Wall" + ".png", 16, 16);
+		sprite = new Sprite("res/entity/references/player_referrence.png", 30, 30);
 
 	}
 
@@ -92,7 +92,7 @@ public class Player {
 	}
 
 	public void render(Graphics g){
-		g.drawImage(sprite.getSprite(1,1,16,16),16 * pos.getX(), 16 * pos.getY(),null);
+		g.drawImage(sprite.getSprite(0,0,30,30),30 * pos.getX(), 30 * pos.getY(),null);
 //		g.setColor(new Color(0x4736FF)); // draw the floors in white
 //		g.fillRect(16 * pos.getX(), 16 * pos.getY(), 16, 16);
 	}

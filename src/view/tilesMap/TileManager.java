@@ -77,9 +77,9 @@ public class TileManager {
 
                 if(i < 1) {
 //                    tm.add(new TileMapNorm(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
-                    tm.add(new TileMapNorm(data[i], sprite, width, height, tileWidth, tileHeight, tileColumns));
+                    tm.add(new TileMapNorm(data[i], sprite, width, height, tileWidth*2, tileHeight*2, tileColumns));
                 } else {
-                    tm.add(new TileMapWall(data[i], sprite, width, height, blockWidth, blockHeight, tileColumns));
+                    tm.add(new TileMapWall(data[i], sprite, width, height, blockWidth*2, blockHeight*2, tileColumns));
                 }
 
 
