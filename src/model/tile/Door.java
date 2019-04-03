@@ -5,7 +5,7 @@ import model.Position;
 public class Door extends Tiles {
 private boolean doorOpened;
 	public Door(Position pos) {
-		super(pos);
+		super(img, pos, h, h);
 		this.doorOpened=false;
 	}
 	

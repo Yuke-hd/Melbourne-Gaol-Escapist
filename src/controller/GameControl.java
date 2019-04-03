@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import model.DIR;
 import model.Position;
@@ -14,6 +15,7 @@ import model.player.LockSmith;
 import model.player.Player;
 import model.player.Warden;
 import model.tile.Wall;
+import utility.util;
 import view.TestWindow;
 
 public class GameControl {
@@ -23,20 +25,21 @@ public class GameControl {
 	public static DIR dir;
 	public static int playerCounter;
 	public static ArrayList<Player> players;
-
+	static Random rand = new Random();
 	public GameControl() {
 	}
 
 	public static void initilize() {
 		iniWall();
 		players = new ArrayList<Player>();
-		Havoc h = new Havoc(new Position(2, 5), "aaa");
-		Jager j = new Jager(new Position(5, 3), "bbb");
-		A47 a = new A47(new Position(7, 6), "ccc");
-		LockSmith l = new LockSmith(new Position(1, 8), "ddd");
 
-		Warden w = new Warden(new Position(6, 7), "eee");
-		Guard g = new Guard(new Position(7, 2), "fff");
+		Havoc h = new Havoc(util.randPos(), "aaa");
+		Jager j = new Jager(util.randPos(), "bbb");
+		A47 a = new A47(util.randPos(), "ccc");
+		LockSmith l = new LockSmith(util.randPos(), "ddd");
+
+		Warden w = new Warden(util.randPos(), "eee");
+		Guard g = new Guard(util.randPos(), "fff");
 
 		players.add(h);
 		players.add(j);
@@ -65,7 +68,7 @@ public class GameControl {
 		list.toArray(nsz);
 		wall = list.stream().mapToInt(Integer::intValue).toArray();
 		return wall;
-
+		
 	}
 
 	public void run() throws InterruptedException {

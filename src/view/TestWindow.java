@@ -33,32 +33,37 @@ public class TestWindow {
 }
 
 class Mycanvas extends Canvas {
-	// 重写paint()方法，必须的，当调用repaint()时，会自动调用paint()
 	Random rand = new Random();
-
-	public void paint(Graphics g) {
-//		g.setColor(new Color(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255))); // 设置画笔颜色
-//		g.drawRect(rand.nextInt(250), rand.nextInt(180), 50, 50); // 画矩形，XY坐标随机，长宽各为40，50
+	@Override
+	public void paint(Graphics g) { // override paint(), paint() will also be called by repaint()
 		int gz = GameControl.gameSize;
-		for (int i = 0; i < gz; i++) {
-			for (int j = 0; j < gz; j++) {
+		for (int i = 0; i < gz; i++) { // for every x in board
+			for (int j = 0; j < gz; j++) { // for every y in board
 				Position position = new Position(i, j);
 				if (!util.findEle(GameControl.wall, position.getSeq())) {
-					g.setColor(new Color(0xFFFFFF));
+					g.setColor(new Color(0xFFFFFF)); // draw the floors in white
 					g.fillRect(25 * i, 25 * j, 25, 25);
 				} else {
-					g.setColor(new Color(0x000000));
+					g.setColor(new Color(0x000000)); // draw the walls in black
 					g.fillRect(25 * i, 25 * j, 25, 25);
 				}
 			}
 		}
-		
-		int playerCounter =GameControl.playerCounter;
-		ArrayList<Player> players  = GameControl.players;
+
+		int playerCounter = GameControl.playerCounter;
+		ArrayList<Player> players = GameControl.players;
+		Position pos;
 		for (int i = 0; i < players.size(); i++) {
-			Position pos = players.get(i).getPos();
-			g.setColor(new Color(0x1AE6E6));
-			g.fillRect(25 * pos.getX(), 25 * pos.getY(), 25, 25);
+			if (i == playerCounter) {
+				pos = players.get(playerCounter).getPos(); // draw current player in red
+				g.setColor(new Color(0xff0033));
+
+			} else {
+				pos = players.get(i).getPos();
+				g.setColor(new Color(0x1AE6E6)); // draw other players in cyan
+
+			}
+			g.fillRect(25 * pos.getX(), 25 * pos.getY(), 25, 25); // draw
 		}
 	}
 }
@@ -75,7 +80,6 @@ class MyFrame extends Frame {
 
 	public void LaunchMyFrame() { // 定义一个运行窗体方法
 		// setLayout(); // 设置默认布局
-		
 
 		setSize(300, 333); // 设置窗体大小
 		mc.setPreferredSize(new Dimension(250, 180));
