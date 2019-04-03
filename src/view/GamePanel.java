@@ -1,5 +1,5 @@
 package view;/*
- * *Network programming lab 2
+ * *OOSD
  * *@Date:  2019-03-22
  * *@author:  Biao Li
  * *StudentID :  s3675917
@@ -10,13 +10,11 @@ import controller.SetupController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 public class GamePanel extends JPanel {
 
-    public static int width;
-    public static int height;
+    private int width;
+    private int height;
     public static Graphics g;
     private SetupController sc;
 
@@ -28,10 +26,9 @@ public class GamePanel extends JPanel {
     }
 
     public GamePanel(int width, int height) {
-        //this.g = getGraphics();
         init();
-        GamePanel.width = width;
-        GamePanel.height = height;
+        this.width = width;
+        this.height = height;
         setPreferredSize(new Dimension(width, height));
         setFocusable(true);
         requestFocus();
@@ -41,7 +38,7 @@ public class GamePanel extends JPanel {
         sc = new SetupController();
     }
 
-    public void render() {
+    private void render() {
             sc.render(g);
 
 

@@ -1,23 +1,19 @@
 package view.tilesMap;
 
 import java.awt.Graphics;
-
-import javafx.geometry.Pos;
 import model.Position;
-import model.blocks.NormBlock;
-import model.tile.Tiles;
 import model.tile.WallTiles;
 import view.Sprite;
 
 public class TileMapWall extends TileMap {
 
-    public static WallTiles[] event_blocks;
+    private WallTiles[] event_blocks;
 
     private int tileWidth;
     private int tileHeight;
 
-    public static int width;
-    public static int height;
+    private int width;
+    private int height;
 
     public TileMapWall(String data, Sprite sprite, int width, int height, int tileWidth, int tileHeight, int tileColumns) {
         event_blocks = new WallTiles[width * height];
@@ -25,8 +21,8 @@ public class TileMapWall extends TileMap {
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
 
-        TileMapWall.width = width;
-        TileMapWall.height = height;
+        this.width = width;
+        this.height = height;
 
         String[] block = data.split(",");
         for (int i = 0; i < (width * height); i++) {

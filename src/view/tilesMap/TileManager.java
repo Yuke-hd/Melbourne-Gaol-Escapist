@@ -5,11 +5,8 @@ package view.tilesMap;/*
  * *@ver 1.0
  * */
 
-import javafx.geometry.Pos;
 import model.Position;
-import model.tile.Tiles;
 import model.tile.WallTiles;
-import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -26,25 +23,20 @@ public class TileManager {
     public static ArrayList<TileMap> tm;
 
     private Graphics g;
-    private TileManager() {
-        tm = new ArrayList<TileMap>();
-    }
     private int width = 0;
     private int height = 0;
 
     public TileManager(String path) {
-        tm = new ArrayList<TileMap>();
+        tm = new ArrayList<>();
         addTileMap(path, 16, 16);
     }
 
     private void addTileMap(String path, int blockWidth, int blockHeight) {
         String imagePath;
-
-
         int tileWidth;
         int tileHeight;
         int tileColumns;
-        int layers = 0;
+        int layers;
         Sprite sprite;
 
         String[] data = new String[10];
@@ -98,9 +90,10 @@ public class TileManager {
 
     }
 
-    public void draw(){
-        for(int i = 0; i < tm.size(); i++) {
-            tm.get(i).render(g);
+    private void draw(){
+        for (TileMap tilemap: tm
+             ) {
+            tilemap.render(g);
         }
     }
 

@@ -6,18 +6,13 @@ import java.awt.image.BufferedImage;
 import model.Position;
 
 public abstract class Tiles {
-//	private Position pos;
-//
-//	public Tiles(Position pos) {
-//		this.pos = pos;
-//
-//	}
 
-	protected int w;
-	protected int h;
 
-	protected BufferedImage img;
-	protected Position pos;
+	private int w;
+	private int h;
+
+	private BufferedImage img;
+	private Position pos;
 
 	public Tiles (BufferedImage img, Position pos, int w, int h) {
         this.img = img;
@@ -35,7 +30,7 @@ public abstract class Tiles {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(img, (int) pos.getX(), (int) pos.getY(), w, h, null);
+		g.drawImage(img, pos.getX(), pos.getY(), w, h, null);
 	}
 
 	public Position getPos() {

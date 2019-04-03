@@ -6,11 +6,7 @@ package view.tilesMap;/*
  * */
 
 import model.Position;
-import model.blocks.NormBlock;
 import model.tile.NormTiles;
-import model.tile.Tiles;
-import org.junit.Before;
-import org.junit.Test;
 import view.Sprite;
 import java.awt.*;
 
@@ -26,7 +22,6 @@ public class TileMapNorm extends TileMap {
 
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
-
         this.height = height;
 
         String[] block = data.split(",");
@@ -48,9 +43,11 @@ public class TileMapNorm extends TileMap {
     }
 
     public void render(Graphics g) {
-        for (int i = 0; i < blocks.length; i++) {
-            if (blocks[i] != null)
-            blocks[i].render(g);
+        for (NormTiles nt:blocks
+             ) {
+            if (nt != null){
+                nt.render(g);
+            }
 
         }
     }
