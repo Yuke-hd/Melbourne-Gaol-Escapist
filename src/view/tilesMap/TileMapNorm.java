@@ -7,6 +7,7 @@ package view.tilesMap;/*
 
 import model.Position;
 import model.blocks.NormBlock;
+import model.tile.NormTiles;
 import model.tile.Tiles;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,14 +15,14 @@ import view.Sprite;
 import java.awt.*;
 
 public class TileMapNorm extends TileMap {
-    private Tiles[] blocks;
+    private NormTiles[] blocks;
     private int tileWidth;
     private int tileHeight;
 
     private int height;
 
     public TileMapNorm(String data, Sprite sprite, int width, int height, int tileWidth, int tileHeight, int tileColumns) {
-        blocks = new Tiles[width * height];
+        blocks = new NormTiles[width * height];
 
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
@@ -41,7 +42,7 @@ public class TileMapNorm extends TileMap {
                 draw_location_x = (i % width) * tileWidth;
                 draw_location_y = (i / width) * tileHeight;
 
-                blocks[i] = new NormBlock(sprite.getSprite(sprite_x, sprite_y), new Position(draw_location_x,draw_location_y), tileWidth, tileHeight);
+                blocks[i] = new NormTiles(sprite.getSprite(sprite_x, sprite_y), new Position(draw_location_x,draw_location_y), tileWidth, tileHeight);
             }
         }
     }

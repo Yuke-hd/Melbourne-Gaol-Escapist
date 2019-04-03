@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d947e028-6a87-4446-a2ad-bbf202d9395a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/JUnit_Testing_Bill/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/tile/NormTiles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/tile/WallTiles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/res/tile/untitled.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/tile/untitled.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/tilesMap/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/tilesMap/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/tilesMap/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/tilesMap/TileMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/tilesMap/TileMapNorm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/tilesMap/TileMapNorm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/tilesMap/TileMapWall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/tilesMap/TileMapWall.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/tilesMap/TileManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="113" column="43" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="43" />
+            <state relative-caret-position="240">
+              <caret line="111" column="5" lean-forward="true" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
               <folding>
                 <element signature="e#3466#3467#0" expanded="true" />
                 <element signature="e#3530#3531#0" expanded="true" />
@@ -34,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/tilesMap/TileMapWall.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="62" selection-start-line="62" selection-end-line="62" />
+            <state relative-caret-position="60">
+              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -53,18 +53,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameLauncher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="e#596#597#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/SetupController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -74,14 +62,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/GamePanel.java">
+        <entry file="file://$PROJECT_DIR$/src/controller/GameControl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
-              <folding>
-                <element signature="e#925#926#0" expanded="true" />
-                <element signature="e#967#968#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-22">
+              <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -89,35 +73,58 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/SetupJFame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
+            <state relative-caret-position="8">
               <caret line="28" selection-start-line="28" selection-end-line="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/res/tile/untitled.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="753">
-              <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/tilesMap/TileMapNorm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="59" column="44" lean-forward="true" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+            <state relative-caret-position="756">
+              <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/JUnit_Testing_Bill/Test.java">
+        <entry file="file://$PROJECT_DIR$/src/model/tile/Tiles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="136">
+              <caret line="21" column="63" lean-forward="true" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="63" />
+              <folding>
+                <element signature="e#595#596#0" expanded="true" />
+                <element signature="e#666#667#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/tile/WallTiles.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="8" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#82#83#0" expanded="true" />
+                <element signature="e#105#106#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/tile/NormTiles.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#190#191#0" expanded="true" />
+                <element signature="e#227#228#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,7 +149,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/view/tilesMap/TileMapWall.java" />
         <option value="$PROJECT_DIR$/src/controller/SetupController.java" />
         <option value="$PROJECT_DIR$/src/view/SetupJFame.java" />
         <option value="$PROJECT_DIR$/src/view/GamePanel.java" />
@@ -151,7 +157,10 @@
         <option value="$PROJECT_DIR$/src/res/tile/untitled.xml" />
         <option value="$PROJECT_DIR$/src/view/tilesMap/TileMap.java" />
         <option value="$PROJECT_DIR$/src/JUnit_Testing_Bill/Test.java" />
+        <option value="$PROJECT_DIR$/src/model/tile/WallTiles.java" />
+        <option value="$PROJECT_DIR$/src/model/tile/NormTiles.java" />
         <option value="$PROJECT_DIR$/src/view/tilesMap/TileMapNorm.java" />
+        <option value="$PROJECT_DIR$/src/view/tilesMap/TileMapWall.java" />
         <option value="$PROJECT_DIR$/src/view/tilesMap/TileManager.java" />
       </list>
     </option>
@@ -273,7 +282,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554290104546" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554291257166" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -316,7 +325,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554264877726</updated>
-      <workItem from="1554264881944" duration="15663000" />
+      <workItem from="1554264881944" duration="16762000" />
     </task>
     <task id="LOCAL-00001" summary="Biao Apr 3">
       <created>1554267431384</created>
@@ -339,11 +348,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554286541222</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Biao Apr 3 today's final">
+      <created>1554290126517</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1554290126517</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15663000" />
+    <option name="totallyTimeSpent" value="16762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="412" y="68" width="1440" height="877" extended-state="0" />
@@ -393,19 +409,19 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/tilesMap/TileManager.java</url>
-          <line>71</line>
+          <line>72</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/tilesMap/TileManager.java</url>
-          <line>101</line>
+          <line>102</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/tilesMap/TileManager.java</url>
-          <line>81</line>
+          <line>82</line>
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
@@ -487,13 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/GameControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/awt/Component.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -555,16 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/tile/Tiles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="e#666#667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/blocks/NormBlock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -579,30 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/tilesMap/TileMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/res/tile/untitled.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/SetupJFame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -611,13 +586,6 @@
             <element signature="e#925#926#0" expanded="true" />
             <element signature="e#967#968#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/SetupController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -631,13 +599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/tilesMap/TileMapWall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/JUnit_Testing_Bill/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -645,21 +606,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/tilesMap/TileManager.java">
+    <entry file="file://$PROJECT_DIR$/src/res/tile/untitled.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="113" column="43" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="43" />
+        <state relative-caret-position="-456">
+          <caret line="20" column="127" selection-start-line="20" selection-start-column="127" selection-end-line="20" selection-end-column="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/tilesMap/TileMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
           <folding>
-            <element signature="e#3466#3467#0" expanded="true" />
-            <element signature="e#3530#3531#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/SetupJFame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/tile/WallTiles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="8" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#82#83#0" expanded="true" />
+            <element signature="e#105#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/tile/NormTiles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/tile/Tiles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="21" column="63" lean-forward="true" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="63" />
+          <folding>
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#666#667#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/tilesMap/TileMapNorm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="59" column="44" lean-forward="true" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+        <state relative-caret-position="756">
+          <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/GameControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-22">
+          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/tilesMap/TileMapWall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/SetupController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/tilesMap/TileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="111" column="5" lean-forward="true" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
+          <folding>
+            <element signature="e#3466#3467#0" expanded="true" />
+            <element signature="e#3530#3531#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -6,11 +6,12 @@ import javafx.geometry.Pos;
 import model.Position;
 import model.blocks.NormBlock;
 import model.tile.Tiles;
+import model.tile.WallTiles;
 import view.Sprite;
 
 public class TileMapWall extends TileMap {
 
-    public static Tiles[] event_blocks;
+    public static WallTiles[] event_blocks;
 
     private int tileWidth;
     private int tileHeight;
@@ -19,7 +20,7 @@ public class TileMapWall extends TileMap {
     public static int height;
 
     public TileMapWall(String data, Sprite sprite, int width, int height, int tileWidth, int tileHeight, int tileColumns) {
-        event_blocks = new Tiles[width * height];
+        event_blocks = new WallTiles[width * height];
 
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
@@ -40,15 +41,15 @@ public class TileMapWall extends TileMap {
                 draw_location_x = (i % width) * tileWidth;
                 draw_location_y = (i / width) * tileHeight;
 
-                event_blocks[i] = new NormBlock(sprite.getSprite(sprite_x, sprite_y), new Position(draw_location_x, draw_location_y), tileWidth, tileHeight);
+                event_blocks[i] = new WallTiles(sprite.getSprite(sprite_x, sprite_y), new Position(draw_location_x, draw_location_y), tileWidth, tileHeight);
             }
         }
     }
 
-    public Tiles checkIfIsWall(Position pos) {
+    public WallTiles checkIfIsWall(Position pos) {
         int x = pos.getX();
         int y = pos.getY();
-        for (Tiles tiles : event_blocks
+        for (WallTiles tiles : event_blocks
         ) {
             if (tiles.getPos().getX() == x & tiles.getPos().getY() == y) {
                 return tiles;

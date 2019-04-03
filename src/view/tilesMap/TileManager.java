@@ -8,6 +8,7 @@ package view.tilesMap;/*
 import javafx.geometry.Pos;
 import model.Position;
 import model.tile.Tiles;
+import model.tile.WallTiles;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -104,7 +105,7 @@ public class TileManager {
     }
 
 
-    public Tiles getTileType(Position pos){
+    public WallTiles getTileType(Position pos){
         TileMapWall tileMapWall = (TileMapWall)tm.get(1);
         if (tileMapWall.checkIfIsWall(pos) != null) return tileMapWall.checkIfIsWall(pos);
         else return null;
