@@ -10,37 +10,71 @@ import controller.SetupController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class GamePanel extends JPanel {
 
     private int width;
     private int height;
-    public static Graphics g;
     private SetupController sc;
 
-    public void paint(Graphics g) {
+    BufferStrategy bs;
 
-        Graphics componentGraphics = getComponentGraphics(g);
-        this.g = componentGraphics.create();
-        render();
-    }
+    Image img;
+    Graphics g;
 
-    public GamePanel(int width, int height) {
-        init();
+//    @Override
+//    public void paintComponent(Graphics g){
+//        render(g);
+//    }
+
+//    public void update(Graphics g){
+//
+//
+//        //Create the offscreen graphics context, if no good one exists.
+//        if  (offGraphics == null){
+//            offImage = createImage(width, height);
+//        }
+//
+//        offGraphics = offImage.getGraphics();
+//        render(offGraphics);
+//
+//        g.drawImage(offImage, 0, 0, this);
+//
+//    }
+
+
+
+    public GamePanel(BufferStrategy bs, int width, int height) {
+        this.bs = bs;
         this.width = width;
         this.height = height;
         setPreferredSize(new Dimension(width, height));
         setFocusable(true);
         requestFocus();
+        init();
     }
 
     private void init() {
+        img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        g = img.getGraphics();
         sc = new SetupController();
     }
 
-    private void render() {
+    public void render() {
             sc.render(g);
 
+
+    }
+
+    public void draw() {
+        do {
+            Graphics g2 = bs.getDrawGraphics();
+            g2.drawImage(img, 8, 31, width, height, null);
+            g2.dispose();
+            bs.show();
+        } while(bs.contentsLost());
 
     }
 
