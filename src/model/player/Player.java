@@ -123,8 +123,6 @@ public class Player {
 
 
             if (now - start < 1000) {
-                if ((now - start) % 200 > fp) {
-                    fp++;
                     Double i = new Double((now - start) / 30);
                     int j = i.intValue();
                     animation++;
@@ -133,7 +131,6 @@ public class Player {
                         g.drawImage(sprite.getSprite(animation, 0, wh, wh), oldPosXxH - j * offX, wh * pos.getY(), null);
                     if (offY != 0)
                         g.drawImage(sprite.getSprite(animation, 0, wh, wh), wh * pos.getX(), oldPosYxH - j * offY, null);
-                }
             } else {
                 walking = false;
                 offY = 0;
