@@ -27,9 +27,9 @@ public class SetupJFame extends JFrame  {
         gp.addKeyListener(new Monitor());
 
     }
-    class Monitor extends KeyAdapter { // 内部类，实现KeyListener的子类KeyAdapter
+    class Monitor extends KeyAdapter { // 鍐呴儴绫伙紝瀹炵幇KeyListener鐨勫瓙绫籏eyAdapter
 
-        public void keyPressed(KeyEvent e) { // 重写要实现的按下按键的方法
+        public void keyPressed(KeyEvent e) { // 閲嶅啓瑕佸疄鐜扮殑鎸変笅鎸夐敭鐨勬柟娉�
             DIR dir = null;
             int count = GameControl.playerCounter;
             Player currentPlayer = GameControl.players.get(count);
@@ -51,7 +51,7 @@ public class SetupJFame extends JFrame  {
             System.out.println(currentPlayer.getPos());
             System.out.println();
             if (count < 5) {
-                GameControl.playerCounter++;
+                GameControl.playerCounter=0;
             } else {
                 GameControl.playerCounter = 0;
             }
@@ -61,11 +61,11 @@ public class SetupJFame extends JFrame  {
         }
 
         public DIR getDir(KeyEvent e) {
-            int key = e.getKeyCode(); // 获取按下按键的虚拟码(int类型）
+            int key = e.getKeyCode(); // 鑾峰彇鎸変笅鎸夐敭鐨勮櫄鎷熺爜(int绫诲瀷锛�
             DIR dir = null;
-            if (key == KeyEvent.VK_UP) { // 与按键的虚拟码进行比较，是按下哪个按键
+            if (key == KeyEvent.VK_UP) { // 涓庢寜閿殑铏氭嫙鐮佽繘琛屾瘮杈冿紝鏄寜涓嬪摢涓寜閿�
                 dir = DIR.up;
-            } else if (key == KeyEvent.VK_DOWN) { // 向下箭头
+            } else if (key == KeyEvent.VK_DOWN) { // 鍚戜笅绠ご
                 dir = DIR.down;
             } else if (key == KeyEvent.VK_LEFT) {
                 dir = DIR.left;

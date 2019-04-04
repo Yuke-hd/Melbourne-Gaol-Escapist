@@ -18,7 +18,7 @@ import utility.util;
 public class GameControl {
 	public static int wall[]; //= { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 21, 31, 41, 51, 61, 71, 81, 91, 10, 20, 30, 40, 50,
 			//60, 70, 80, 90, 100, 92, 93, 94, 95, 96, 97, 98, 99 };
-	public static int gameSize = 25;
+	public static int gameSize = 40;
 	public static DIR dir;
 	public static int playerCounter;
 	public static ArrayList<Player> players;
@@ -27,30 +27,35 @@ public class GameControl {
 	}
 
 	public static void initilize() {
-		iniWall();
+		try {
+			XMLreader.iniWall();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		players = new ArrayList<Player>();
 
-		Havoc h = new Havoc(util.randPos(), "aaa");
-		Jager j = new Jager(util.randPos(), "bbb");
-		A47 a = new A47(util.randPos(), "ccc");
-		LockSmith l = new LockSmith(util.randPos(), "ddd");
+		Havoc h = new Havoc(new Position(7, 4), "aaa");
+		//Jager j = new Jager(util.randPos(), "bbb");
+		//A47 a = new A47(util.randPos(), "ccc");
+		//LockSmith l = new LockSmith(util.randPos(), "ddd");
 
-		Warden w = new Warden(util.randPos(), "eee");
-		Guard g = new Guard(util.randPos(), "fff");
+		//Warden w = new Warden(util.randPos(), "eee");
+		//Guard g = new Guard(util.randPos(), "fff");
 
 		players.add(h);
-		players.add(j);
-		players.add(a);
-		players.add(l);
-		players.add(w);
-		players.add(g);
+//		players.add(j);
+//		players.add(a);
+//		players.add(l);
+//		players.add(w);
+//		players.add(g);
 
 		playerCounter = 0;
 
 	}
 
 	private static int[] iniWall() {
-		List<Integer> list = new ArrayList<Integer>();// **须定义时就进行转化**
+		List<Integer> list = new ArrayList<Integer>();// **椤诲畾涔夋椂灏辫繘琛岃浆鍖�**
 		for (int i = 0; i < gameSize; i++) {
 			list.add(i+1);
 			list.add(i*gameSize+1);
