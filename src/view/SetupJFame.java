@@ -5,29 +5,56 @@ import model.DIR;
 import model.player.Player;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
-public class SetupJFame extends JFrame  {
+public class SetupJFame extends JFrame implements Runnable {
+    private BufferStrategy bs;
+
     public static final long serialVersionUID = 1L;
     public GamePanel gp;
-
+    public Thread thread;
     //The menu should show a squared board and the pieces placed on the board
+
     public SetupJFame() {
         setTitle("Game");
-        setSize(1280,720);
-        gp = new GamePanel(1280, 720);
-        add(gp);
+        setSize(1280, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setIgnoreRepaint(true);
         setVisible(true);
+        pack();
         gp.addKeyListener(new Monitor());
-
     }
-    class Monitor extends KeyAdapter { // 鍐呴儴绫伙紝瀹炵幇KeyListener鐨勫瓙绫籏eyAdapter
+
+    public void addNotify() {
+        super.addNotify();
+
+        createBufferStrategy(2);
+        bs = getBufferStrategy();
+        gp = new GamePanel(bs,1280, 720);
+        add(gp);
+
+        if (thread == null) {
+            thread = new Thread(this, "GameThread");
+            thread.start();
+        }
+    }
+
+
+    @Override
+    public void run() {
+        while (true) {
+            gp.render();
+            gp.draw();
+        }
+    }
+
+
+
+    class Monitor extends KeyAdapter { // 内部类，实现KeyListener的子类KeyAdapter
+
 
         public void keyPressed(KeyEvent e) { // 閲嶅啓瑕佸疄鐜扮殑鎸変笅鎸夐敭鐨勬柟娉�
             DIR dir = null;
@@ -56,7 +83,6 @@ public class SetupJFame extends JFrame  {
                 GameControl.playerCounter = 0;
             }
 
-            gp.repaint();
 
         }
 
@@ -78,7 +104,6 @@ public class SetupJFame extends JFrame  {
             return dir;
         }
     }
-
 
 
 //        switch (x) {
@@ -134,8 +159,8 @@ public class SetupJFame extends JFrame  {
 //            default:
 //                return;
 //        }
-        //chase();
+    //chase();
 
-    }
+}
 
 
