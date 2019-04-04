@@ -1,4 +1,4 @@
-package view;
+package view.utils;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;

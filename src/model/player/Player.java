@@ -8,7 +8,8 @@ import model.DIR;
 import model.Position;
 import model.item.Item;
 import utility.util;
-import view.Sprite;
+import view.utils.Animation;
+import view.utils.Sprite;
 
 public class Player {
 
@@ -27,7 +28,9 @@ public class Player {
     private int offX;
     private int offY;
 
-    private int animation;
+    //private int animation;
+
+    private Animation animation;
 
     public Player(Position pos, String name) {
         this.pos = pos;
@@ -38,8 +41,9 @@ public class Player {
         walking = false;
         offX = 0;
         offY = 0;
-        animation = 0;
+        animation = new Animation(0,0);
         fp = 0;
+
     }
 
     public Position checkMove(DIR dir) {
@@ -49,18 +53,22 @@ public class Player {
             case up:
                 y--;
                 offY++;
+                animation.setDirection(3);
                 break;
             case down:
                 y++;
                 offY--;
+                animation.setDirection(0);
                 break;
             case left:
                 x--;
                 offX++;
+                animation.setDirection(1);
                 break;
             case right:
                 x++;
                 offX--;
+                animation.setDirection(2);
                 break;
         }
         Position pos = new Position(x, y);
@@ -125,12 +133,11 @@ public class Player {
             if (now - start < 1000) {
                     Double i = new Double((now - start) / 30);
                     int j = i.intValue();
-                    animation++;
-                    if (animation == 3) animation = 0;
+                    animation.addNum();
                     if (offX != 0)
-                        g.drawImage(sprite.getSprite(animation, 0, wh, wh), oldPosXxH - j * offX, wh * pos.getY(), null);
+                        g.drawImage(sprite.getSprite(animation.getNum(), animation.getDirection(), wh, wh), oldPosXxH - j * offX, wh * pos.getY(), null);
                     if (offY != 0)
-                        g.drawImage(sprite.getSprite(animation, 0, wh, wh), wh * pos.getX(), oldPosYxH - j * offY, null);
+                        g.drawImage(sprite.getSprite(animation.getNum(), animation.getDirection(), wh, wh), wh * pos.getX(), oldPosYxH - j * offY, null);
             } else {
                 walking = false;
                 offY = 0;

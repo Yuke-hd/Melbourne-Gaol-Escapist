@@ -7,7 +7,7 @@ package view.tilesMap;/*
 
 import model.Position;
 import model.tile.NormTiles;
-import view.Sprite;
+import view.utils.Sprite;
 import java.awt.*;
 
 public class TileMapNorm extends TileMap {

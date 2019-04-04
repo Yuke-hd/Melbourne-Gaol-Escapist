@@ -3,7 +3,7 @@ package view.tilesMap;
 import java.awt.Graphics;
 import model.Position;
 import model.tile.WallTiles;
-import view.Sprite;
+import view.utils.Sprite;
 
 public class TileMapWall extends TileMap {
 
