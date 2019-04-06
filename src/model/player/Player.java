@@ -107,8 +107,15 @@ public class Player {
         return FOV;
     }
 
-    public void setFOV(int fOV) {
-        FOV = fOV;
+    /**
+     * Set the player's field of view
+     * @Precondition FOV must greater than 0
+     * @param FOV field of view
+     * 
+     */
+    public void setFOV(int FOV) {
+    	assert FOV > 0 : ("FOV must greater than 0");
+        this.FOV = FOV;
     }
 
     public Enum<PlayerStat> getStatus() {

@@ -16,9 +16,16 @@ public class Position {
 		return "x: " + x + " y: " + y;
 	}
 
+	/**
+	 * @return sequence of the position in game board
+	 */
 	public int getSeq() {
+		
 		int gz = GameControl.gameSize;
+		
 		int seq = gz * y + x + 1;
+		
+		
 		return seq;
 	}
 
