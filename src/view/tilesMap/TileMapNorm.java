@@ -8,7 +8,6 @@ package view.tilesMap;/*
 import model.Position;
 import model.tile.NormTiles;
 import view.utils.Sprite;
-import java.awt.*;
 
 public class TileMapNorm extends TileMap {
     private NormTiles[] blocks;
@@ -42,16 +41,10 @@ public class TileMapNorm extends TileMap {
         }
     }
 
-    public void render(Graphics g) {
-        for (NormTiles nt:blocks
-             ) {
-            if (nt != null){
-                nt.render(g);
-            }
 
-        }
+    public NormTiles[] getBlocks() {
+        return blocks;
     }
-
 
     public Position getRandomPoint(){
         double random = Math.random() * (blocks.length-1);

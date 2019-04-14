@@ -13,13 +13,8 @@ public class SetupController {
 		GameControl.initilize();
 	}
 
-	public void render(Graphics g) {
-		tm.render(g);
-		for (Player player:GameControl.players
-		) {
-			player.render(g);
-		}
-//        player.render(g);
+	public TileManager getTm() {
+		return tm;
 
 	}
 

@@ -22,9 +22,14 @@ import java.util.ArrayList;
 public class TileManager {
     public static ArrayList<TileMap> tm;
 
+    public static ArrayList<TileMap> getTm() {
+        return tm;
+    }
+
     private Graphics g;
     private int width = 0;
     private int height = 0;
+    private String[] wall;
 
     public TileManager(String path) {
         tm = new ArrayList<>();
@@ -73,7 +78,13 @@ public class TileManager {
                 data[i] = eElement.getElementsByTagName("data").item(0).getTextContent();
 
                 switch (i){
-                    case 2: tm.add(new TileMapWall(data[i], sprite, width, height, blockWidth*2, blockHeight*2, tileColumns));break;
+                    case 2: tm.add(new TileMapWall(data[i], sprite, width, height, blockWidth*2, blockHeight*2, tileColumns));
+//                    wallString = data[i].split(",");
+//                        for (String s:wallString
+//                             ) {
+//
+//                        }
+                    break;
                     default: tm.add(new TileMapNorm(data[i], sprite, width, height, tileWidth*2, tileHeight*2, tileColumns));
                 }
 
@@ -81,19 +92,6 @@ public class TileManager {
             }
         } catch(Exception e) {
             System.out.println("ERROR - TILEMANAGER: can not read tilemap");
-        }
-    }
-
-    public void render(Graphics g) {
-        this.g = g;
-        draw();
-
-    }
-
-    private void draw(){
-        for (TileMap tilemap: tm
-             ) {
-            tilemap.render(g);
         }
     }
 

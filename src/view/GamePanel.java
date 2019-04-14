@@ -6,12 +6,19 @@ package view;/*
  * *@ver 1.0
  * */
 
+import controller.GameControl;
 import controller.SetupController;
+import model.Position;
+import model.player.Player;
+import model.tile.Tiles;
+import view.tilesMap.TileManager;
+import view.tilesMap.TileMap;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel {
 
@@ -23,27 +30,6 @@ public class GamePanel extends JPanel {
 
     Image img;
     Graphics g;
-
-//    @Override
-//    public void paintComponent(Graphics g){
-//        render(g);
-//    }
-
-//    public void update(Graphics g){
-//
-//
-//        //Create the offscreen graphics context, if no good one exists.
-//        if  (offGraphics == null){
-//            offImage = createImage(width, height);
-//        }
-//
-//        offGraphics = offImage.getGraphics();
-//        render(offGraphics);
-//
-//        g.drawImage(offImage, 0, 0, this);
-//
-//    }
-
 
 
     public GamePanel(BufferStrategy bs, int width, int height) {
@@ -63,7 +49,56 @@ public class GamePanel extends JPanel {
     }
 
     public void render() {
-            sc.render(g);
+        //drawing map
+        TileManager tileManager = sc.getTm();
+        ArrayList<TileMap> tileMaps = tileManager.getTm();
+        for (TileMap tilemap : tileMaps
+        ) {
+            Tiles[] blocks = tilemap.getBlocks();
+            for (Tiles tile : blocks
+            ) {
+                if (tile != null)
+                    g.drawImage(tile.getImg(), tile.getPos().getX(), tile.getPos().getY(), tile.getWidth(), tile.getHeight(), null);
+
+            }
+
+        }
+
+        //drawing player
+        for (Player player : GameControl.players
+        ) {
+            long now;
+            int offX = player.getOffX();
+            int offY = player.getOffY();
+            int wh = player.getWh();
+            Position pos = player.getPos();
+            if (player.isWalking()) {
+                now = System.currentTimeMillis();
+                int oldPosXxH = pos.getX() * 32;
+                int oldPosYxH = pos.getY() * 32;
+                if (offX != 0)
+                    oldPosXxH = oldPosXxH + 32 * offX;
+                if (offY != 0)
+                    oldPosYxH = oldPosYxH + 32 * offY;
+
+
+                if (now - player.getStart() < 1000) {
+                    Double i = new Double((now - player.getStart()) / 30);
+                    int j = i.intValue();
+                    player.AnimationAddNum();
+                    if (offX != 0)
+                        g.drawImage(player.getSpriteImage(), oldPosXxH - j * offX, wh * pos.getY(), null);
+                    if (offY != 0)
+                        g.drawImage(player.getSpriteImage(), wh * pos.getX(), oldPosYxH - j * offY, null);
+                } else {
+                    player.setWalking(false);
+                    player.setOffX(0);
+                    player.setOffY(0);
+                }
+
+            } else
+                g.drawImage(player.getStandingImage(), wh * pos.getX(), wh * pos.getY(), null);
+        }
 
 
     }
@@ -74,7 +109,7 @@ public class GamePanel extends JPanel {
             g2.drawImage(img, 8, 31, width, height, null);
             g2.dispose();
             bs.show();
-        } while(bs.contentsLost());
+        } while (bs.contentsLost());
 
     }
 

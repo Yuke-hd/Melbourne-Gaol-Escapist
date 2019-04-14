@@ -1,6 +1,7 @@
 package model.player;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import controller.GameControl;
@@ -23,12 +24,9 @@ public class Player {
     private long now;
     private boolean walking;
     private int wh = 32;
-    private int fp;
 
     private int offX;
     private int offY;
-
-    //private int animation;
 
     private Animation animation;
 
@@ -41,8 +39,7 @@ public class Player {
         walking = false;
         offX = 0;
         offY = 0;
-        animation = new Animation(0,0);
-        fp = 0;
+        animation = new Animation(0, 0);
 
     }
 
@@ -120,33 +117,49 @@ public class Player {
     }
 
     public void render(Graphics g) {
-        if (walking) {
-            now = System.currentTimeMillis();
-            int oldPosXxH = pos.getX() * 32;
-            int oldPosYxH = pos.getY() * 32;
-            if (offX != 0)
-                oldPosXxH = oldPosXxH + 32 * offX;
-            if (offY != 0)
-                oldPosYxH = oldPosYxH + 32 * offY;
-
-
-            if (now - start < 1000) {
-                    Double i = new Double((now - start) / 30);
-                    int j = i.intValue();
-                    animation.addNum();
-                    if (offX != 0)
-                        g.drawImage(sprite.getSprite(animation.getNum(), animation.getDirection(), wh, wh), oldPosXxH - j * offX, wh * pos.getY(), null);
-                    if (offY != 0)
-                        g.drawImage(sprite.getSprite(animation.getNum(), animation.getDirection(), wh, wh), wh * pos.getX(), oldPosYxH - j * offY, null);
-            } else {
-                walking = false;
-                offY = 0;
-                offX = 0;
-                fp = 0;
-            }
-
-        } else
-            g.drawImage(sprite.getSprite(0, 2, wh, wh), wh * pos.getX(), wh * pos.getY(), null);
     }
 
+    public long getStart() {
+        return start;
+    }
+
+    public void setWalking(boolean walking) {
+        this.walking = walking;
+    }
+
+    public boolean isWalking() {
+        return walking;
+    }
+
+    public BufferedImage getSpriteImage() {
+        return sprite.getSprite(animation.getNum(), animation.getDirection(), wh, wh);
+    }
+
+    public void AnimationAddNum() {
+        animation.addNum();
+    }
+
+    public BufferedImage getStandingImage() {
+        return sprite.getSprite(0, 2, wh, wh);
+    }
+
+    public int getWh() {
+        return wh;
+    }
+
+    public void setOffX(int offX) {
+        this.offX = offX;
+    }
+
+    public void setOffY(int offY) {
+        this.offY = offY;
+    }
+
+    public int getOffX() {
+        return offX;
+    }
+
+    public int getOffY() {
+        return offY;
+    }
 }

@@ -1,6 +1,5 @@
 package view.tilesMap;
 
-import java.awt.Graphics;
 import model.Position;
 import model.tile.WallTiles;
 import view.utils.Sprite;
@@ -55,12 +54,9 @@ public class TileMapWall extends TileMap {
         return null;
     }
 
-
-    public void render(Graphics g) {
-        for (int i = 0; i < event_blocks.length; i++) {
-            if (event_blocks[i] != null)
-                event_blocks[i].render(g);
-        }
+    public WallTiles[] getBlocks() {
+        return event_blocks;
     }
+
 }
 

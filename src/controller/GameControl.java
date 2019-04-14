@@ -54,24 +54,24 @@ public class GameControl {
 
 	}
 
-	private static int[] iniWall() {
-		List<Integer> list = new ArrayList<Integer>();// **椤诲畾涔夋椂灏辫繘琛岃浆鍖�**
-		for (int i = 0; i < gameSize; i++) {
-			list.add(i+1);
-			list.add(i*gameSize+1);
-			list.add((i+1)*gameSize);
-			if (i == gameSize-1) {
-				for (int j = 0; j < gameSize-1; j++) {
-					list.add(j+1+gameSize*(gameSize-1));
-				}
-			}
-		}
-		Integer[] nsz = new Integer[list.size()];
-		list.toArray(nsz);
-		wall = list.stream().mapToInt(Integer::intValue).toArray();
-		return wall;
-		
-	}
+//	private static int[] iniWall() {
+//		List<Integer> list = new ArrayList<Integer>();// **椤诲畾涔夋椂灏辫繘琛岃浆鍖�**
+//		for (int i = 0; i < gameSize; i++) {
+//			list.add(i+1);
+//			list.add(i*gameSize+1);
+//			list.add((i+1)*gameSize);
+//			if (i == gameSize-1) {
+//				for (int j = 0; j < gameSize-1; j++) {
+//					list.add(j+1+gameSize*(gameSize-1));
+//				}
+//			}
+//		}
+//		Integer[] nsz = new Integer[list.size()];
+//		list.toArray(nsz);
+//		wall = list.stream().mapToInt(Integer::intValue).toArray();
+//		return wall;
+//
+//	}
 
 	public void run() throws InterruptedException {
 		Havoc p = new Havoc(new Position(2, 2), "aaa");

@@ -29,8 +29,8 @@ public abstract class Tiles {
 		return h;
 	}
 
-	public void render(Graphics g) {
-		g.drawImage(img, pos.getX(), pos.getY(), w, h, null);
+	public BufferedImage getImg() {
+		return img;
 	}
 
 	public Position getPos() {
