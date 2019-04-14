@@ -20,7 +20,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class GamePanel extends JPanel {
+public class    GamePanel extends JPanel {
 
     private int width;
     private int height;

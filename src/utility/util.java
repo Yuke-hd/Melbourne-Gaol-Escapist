@@ -2,9 +2,6 @@ package utility;
 
 import java.util.Random;
 
-import com.google.java.contract.Ensures;
-import com.google.java.contract.Requires;
-
 import controller.GameControl;
 import model.Position;
 

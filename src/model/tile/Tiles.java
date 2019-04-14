@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 import model.Position;
 
-public abstract class Tiles {
+public class Tiles {
 
 
 	private int w;

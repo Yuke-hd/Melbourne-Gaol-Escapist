@@ -5,8 +5,6 @@ package view.tilesMap;/*
  * *@ver 1.0
  * */
 
-import model.Position;
-import model.tile.WallTiles;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -15,22 +13,14 @@ import view.utils.Sprite;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 
 public class TileManager {
-    public static ArrayList<TileMap> tm;
-
-    public static ArrayList<TileMap> getTm() {
-        return tm;
-    }
-
-    private Graphics g;
+    private ArrayList<TileMap> tm;
     private int width = 0;
     private int height = 0;
-    private String[] wall;
-
+    // private String[] wall;
     public TileManager(String path) {
         tm = new ArrayList<>();
         addTileMap(path, 16, 16);
@@ -78,14 +68,14 @@ public class TileManager {
                 data[i] = eElement.getElementsByTagName("data").item(0).getTextContent();
 
                 switch (i){
-                    case 2: tm.add(new TileMapWall(data[i], sprite, width, height, blockWidth*2, blockHeight*2, tileColumns));
+                    case 2: tm.add(new TileMap(data[i], sprite, width, height, blockWidth*2, blockHeight*2, tileColumns));
 //                    wallString = data[i].split(",");
 //                        for (String s:wallString
 //                             ) {
 //
 //                        }
                     break;
-                    default: tm.add(new TileMapNorm(data[i], sprite, width, height, tileWidth*2, tileHeight*2, tileColumns));
+                    default: tm.add(new TileMap(data[i], sprite, width, height, tileWidth*2, tileHeight*2, tileColumns));
                 }
 
 
@@ -95,15 +85,19 @@ public class TileManager {
         }
     }
 
+//
+//    public WallTiles getTileType(Position pos){
+//        TileMapWall tileMapWall = (TileMapWall)tm.get(1);
+//        if (tileMapWall.checkIfIsWall(pos) != null) return tileMapWall.checkIfIsWall(pos);
+//        else return null;
+//    }
 
-    public WallTiles getTileType(Position pos){
-        TileMapWall tileMapWall = (TileMapWall)tm.get(1);
-        if (tileMapWall.checkIfIsWall(pos) != null) return tileMapWall.checkIfIsWall(pos);
-        else return null;
-    }
+//    public Position getRandomStartPoint(){
+//        return ((TileMapNorm)tm.get(1)).getRandomPoint();
+//    }
 
-    public Position getRandomStartPoint(){
-        return ((TileMapNorm)tm.get(1)).getRandomPoint();
+    public ArrayList<TileMap> getTm() {
+        return tm;
     }
 
 
