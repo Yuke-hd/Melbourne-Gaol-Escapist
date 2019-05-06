@@ -29,7 +29,7 @@ public class XMLreader {
 		
 			Element ele = conElem2.get(2).element("data");
 			String string = ele.getText();
-			System.out.println(string);
+			//System.out.println(string);
 			String[] xStrings = string.split(",");
 			List<Integer> temp = new ArrayList<Integer>();
 			for (int i = 0; i < xStrings.length; i++) {
@@ -40,10 +40,33 @@ public class XMLreader {
 				}
 				
 			}
-			for (int i = 0; i < temp.size(); i++) {
-				System.out.println(temp.get(i));
-			}
+//			for (int i = 0; i < temp.size(); i++) {
+//				System.out.println(temp.get(i));
+//			}
 			GameControl.wall = temp.stream().mapToInt(Integer::intValue).toArray();
+
+
+
+			Element doorElement = conElem2.get(3).element("data");
+			String buffer = doorElement.getText();
+			System.out.println(buffer);
+			String[] bufferStrings = buffer.split(",");
+			List<Integer> doorList = new ArrayList<>();
+			for (int i = 0; i < bufferStrings.length; i++) {
+				System.out.println(bufferStrings[i]);
+				if ((bufferStrings[i].contains("60"))) {
+
+					doorList.add(i+1);
+				}
+
+			}
+//			for (int i = 0; i < temp.size(); i++) {
+//				System.out.println(temp.get(i));
+//			}
+			GameControl.door = doorList.stream().mapToInt(Integer::intValue).toArray();
+
+
+
 		
 		
 
