@@ -75,13 +75,20 @@ public class Player {
     public void move(DIR dir) throws Exception {
         Position nextPos = checkMove(dir);
         int posSeq = nextPos.getSeq();
-        if (!util.findEle(GameControl.wall, posSeq)) {
+        if (!util.findEle(GameControl.wall, posSeq)&&!util.findEle(GameControl.door, posSeq)) {
             setPos(nextPos);
             walking = true;
             start = System.currentTimeMillis();
         } else {
             throw new Exception("wall ahead");
         }
+//        if (!util.findEle(GameControl.door, posSeq)) {
+//            setPos(nextPos);
+//            walking = true;
+//            start = System.currentTimeMillis();
+//        } else {
+//            throw new Exception("door ahead");
+//        }
     }
 
     public Position getPos() {
