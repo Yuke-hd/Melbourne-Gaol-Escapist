@@ -18,6 +18,7 @@ import utility.util;
 public class GameControl {
 	public static int wall[]; //= { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 21, 31, 41, 51, 61, 71, 81, 91, 10, 20, 30, 40, 50,
 			//60, 70, 80, 90, 100, 92, 93, 94, 95, 96, 97, 98, 99 };
+	public static int door[];
 	public static int gameSize = 40;
 	public static DIR dir;
 	public static int playerCounter;
@@ -29,13 +30,20 @@ public class GameControl {
 	public static void initilize() {
 		try {
 			XMLreader.iniWall();
+			System.out.println(wall);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+//		for(int i = 0; i < door.length; i++)
+//		{
+//			System.out.println("door["+i+"]="+door[i]);
+//		}
+
 		players = new ArrayList<Player>();
 
 		Havoc h = new Havoc(new Position(7, 4), "aaa");
+
 		//Jager j = new Jager(util.randPos(), "bbb");
 		//A47 a = new A47(util.randPos(), "ccc");
 		//LockSmith l = new LockSmith(util.randPos(), "ddd");
